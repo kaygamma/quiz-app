@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "question": "Which language runs natively in a web browser?",
+    "correct_answer": "JavaScript",
+    "incorrect_answers": ["Python", "C++", "Java"]
+  },
+  {
+    "id": 2,
+    "question": "What does HTML stand for?",
+    "correct_answer": "HyperText Markup Language",
+    "incorrect_answers": ["HighText Machine Language", "HyperTransfer Markup Language", "HyperText Modern Language"]
+  },
+  {
+    "id": 3,
+    "question": "What does CSS stand for?",
+    "correct_answer": "Cascading Style Sheets",
+    "incorrect_answers": ["Creative Style Syntax", "Computer Style Sheets", "Cascading Structure Sheets"]
+  },
+  {
+    "id": 4,
+    "question": "Which data structure uses LIFO (Last In, First Out) order?",
+    "correct_answer": "Stack",
+    "incorrect_answers": ["Queue", "Array", "Linked List"]
+  },
+  {
+    "id": 5,
+    "question": "Which data structure uses FIFO (First In, First Out) order?",
+    "correct_answer": "Queue",
+    "incorrect_answers": ["Stack", "Tree", "Graph"]
+  },
+  {
+    "id": 6,
+    "question": "In Git, which command is used to combine changes from one branch into another?",
+    "correct_answer": "merge",
+    "incorrect_answers": ["clone", "fork", "push"]
+  },
+  {
+    "id": 7,
+    "question": "What is the time complexity of binary search on a sorted array?",
+    "correct_answer": "O(log n)",
+    "incorrect_answers": ["O(n)", "O(n^2)", "O(1)"]
+  },
+  {
+    "id": 8,
+    "question": "Which HTTP method is typically used to retrieve data without modifying it?",
+    "correct_answer": "GET",
+    "incorrect_answers": ["POST", "DELETE", "PUT"]
+  },
+  {
+    "id": 9,
+    "question": "In React, what hook is used to manage local component state?",
+    "correct_answer": "useState",
+    "incorrect_answers": ["useEffect", "useContext", "useReducer"]
+  },
+  {
+    "id": 10,
+    "question": "What does SQL stand for?",
+    "correct_answer": "Structured Query Language",
+    "incorrect_answers": ["Simple Query Language", "Structured Question Language", "Sequential Query Language"]
+  },
+  {
+    "id": 11,
+    "question": "Which of these is NOT a JavaScript primitive type?",
+    "correct_answer": "Array",
+    "incorrect_answers": ["String", "Boolean", "Number"]
+  },
+  {
+    "id": 12,
+    "question": "What symbol is used for comments in Python?",
+    "correct_answer": "#",
+    "incorrect_answers": ["//", "/* */", "--"]
+  },
+  {
+    "id": 13,
+    "question": "Which of these is a NoSQL database?",
+    "correct_answer": "MongoDB",
+    "incorrect_answers": ["PostgreSQL", "MySQL", "SQLite"]
+  },
+  {
+    "id": 14,
+    "question": "What does API stand for?",
+    "correct_answer": "Application Programming Interface",
+    "incorrect_answers": ["Application Process Integration", "Automated Programming Interface", "Application Protocol Interface"]
+  },
+  {
+    "id": 15,
+    "question": "In Big O notation, what does O(1) describe?",
+    "correct_answer": "Constant time",
+    "incorrect_answers": ["Linear time", "Logarithmic time", "Quadratic time"]
+  },
+  {
+    "id": 16,
+    "question": "Which CSS property is used to control the space between elements and their border?",
+    "correct_answer": "padding",
+    "incorrect_answers": ["margin", "border-spacing", "gap"]
+  },
+  {
+    "id": 17,
+    "question": "What is the correct file extension for TypeScript files?",
+    "correct_answer": ".ts",
+    "incorrect_answers": [".tsx", ".jsx", ".java"]
+  },
+  {
+    "id": 18,
+    "question": "Which keyword declares a constant variable in JavaScript?",
+    "correct_answer": "const",
+    "incorrect_answers": ["let", "var", "final"]
+  },
+  {
+    "id": 19,
+    "question": "What does CRUD stand for in web development?",
+    "correct_answer": "Create, Read, Update, Delete",
+    "incorrect_answers": ["Create, Run, Update, Debug", "Copy, Read, Update, Delete", "Create, Read, Undo, Delete"]
+  },
+  {
+    "id": 20,
+    "question": "Which company originally developed React?",
+    "correct_answer": "Facebook",
+    "incorrect_answers": ["Google", "Microsoft", "Amazon"]
+  }
+]
