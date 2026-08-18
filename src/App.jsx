@@ -18,12 +18,11 @@ function App() {
   const [status, setStatus] = useState("idle")
   const [selectedAnswer, setSelectedAnswer] = useState(null)
 
-  const [currentquestion, setCurrentQuestion] = useState(currentIndex)
+  const currentQuestion = questions[currentIndex]
   const totalQuestions = questions.length
 
   function handleStart() {
     setQuestions(shuffleArray(questionsData))
-    console.log(questions)
     setCurrentIndex(0) 
     setScore(0)
     setStatus("active")
@@ -35,10 +34,10 @@ function App() {
     
     setSelectedAnswer(choice)
 
-    if (choice === currentquestion.correct_answer){
+    if (choice === currentQuestion.correct_answer){
       setScore((prevScore) => prevScore + 1)
     }
-    setStatus = ("answered")
+    setStatus ("answered")
   }
 
   function handleNext() {
@@ -59,7 +58,7 @@ function App() {
   return (
     <>
       {status==="idle"&&<StartScreen onStart= {handleStart}/>}
-      {(status==="active"|| status==="answered")&& currentquestion && 
+      {(status==="active"|| status==="answered")&& currentQuestion && 
       (
         <>
           <ProgressBar 
@@ -68,12 +67,12 @@ function App() {
           />
 
           <Question
-            question={currentquestion}
+            question={currentQuestion}
             currentIndex={currentIndex}
             total={totalQuestions}
           />
           <AnswerOptions
-            question={currentquestion}
+            question={currentQuestion}
             selectedAnswer={selectedAnswer}
             status={status}
             onAnswer={handleAnswer}
