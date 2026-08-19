@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useReducer } from 'react'
+import { quizReducer, initialState } from "./reducer/quizReducer.js"
 import questionsData from "./data/questions.json";
 import StartScreen from "./components/StartScreen";
 import Question from "./components/Question";
@@ -10,49 +11,33 @@ function shuffleArray(array){
   return [...array].sort(()=> Math.random()-0.5);
 }
 
-function App() {
-
-  const [questions, setQuestions] = useState([])
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [score, setScore] = useState(0)
-  const [status, setStatus] = useState("idle")
-  const [selectedAnswer, setSelectedAnswer] = useState(null)
-
+function App(){
+  const [state, dispatch] = useReducer(quizReducer, initialState)
+  // const [questions, setQuestions] = useState([])
+  // const [currentIndex, setCurrentIndex] = useState(0)
+  // const [score, setScore] = useState(0)
+  // const [status, setStatus] = useState("idle")
+  // const [selectedAnswer, setSelectedAnswer] = useState(null)
+  const {questions, currentIndex, score, status, selectedAnswer} = state
   const currentQuestion = questions[currentIndex]
   const totalQuestions = questions.length
 
   function handleStart() {
-    setQuestions(shuffleArray(questionsData))
-    setCurrentIndex(0) 
-    setScore(0)
-    setStatus("active")
-    setSelectedAnswer(null)
+    dispatch({ type: "START", payload: shuffleArray(questionsData) })
   }
 
   function handleAnswer(choice) {
     if (status!=="active") return
     
-    setSelectedAnswer(choice)
-
-    if (choice === currentQuestion.correct_answer){
-      setScore((prevScore) => prevScore + 1)
-    }
-    setStatus ("answered")
+    dispatch({ type: "ANSWER", payload: choice })
   }
 
   function handleNext() {
-    const islastQuestion = currentIndex === totalQuestions -1
-    if(islastQuestion){
-      setStatus("finished")
-    }else{
-      setCurrentIndex((prevIndex)=> prevIndex + 1)
-      setSelectedAnswer(null)
-      setStatus("active")
-    }
+    dispatch({ type: "NEXT" })
   }
 
   function handleRestart() {
-    setStatus("idle")
+    dispatch({ type: "RESTART" })
   }
   
   return (
@@ -69,7 +54,7 @@ function App() {
           <Question
             question={currentQuestion}
             currentIndex={currentIndex}
-            total={totalQuestions}
+            totalQuestions={totalQuestions}
           />
           <AnswerOptions
             question={currentQuestion}
@@ -92,5 +77,7 @@ function App() {
         />
       )}
     </>
-  )
+  );
+}
+
 export default App
