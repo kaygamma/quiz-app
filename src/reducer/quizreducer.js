@@ -20,6 +20,13 @@ export function quizReducer(state, action) {
                 status: "answered"
             }
         }
+        case "TIMEOUT": {
+            return{
+                ...state,
+                selectedAnswer: null,
+                status: "answered"
+            }
+        }
         case "NEXT": {
             const isLastQuestion = state.currentIndex === state.questions.length - 1
             if (isLastQuestion) {

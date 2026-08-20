@@ -1,0 +1,22 @@
+import { createContext, useContext, useReducer } from "react"
+import { quizReducer, initialState } from "../reducer/quizReducer"
+
+const QuizContext = createContext(null);
+
+export function QuizProvider({ children }) {
+  const [state, dispatch] = useReducer(quizReducer, initialState)
+
+  const value = { state, dispatch }
+
+  return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>
+}
+
+export function useQuiz() {
+  const context = useContext(QuizContext)
+
+  if (context === null) {
+    throw new Error("useQuiz must be used inside a <QuizProvider>")
+  }
+
+  return context;
+}

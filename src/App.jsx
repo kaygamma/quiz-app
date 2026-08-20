@@ -1,83 +1,17 @@
-import { useState, useReducer } from 'react'
-import { quizReducer, initialState } from "./reducer/quizReducer.js"
-import questionsData from "./data/questions.json";
-import StartScreen from "./components/StartScreen";
-import Question from "./components/Question";
-import AnswerOptions from "./components/AnswerOptions";
-import ProgressBar from "./components/ProgressBar";
-import ScoreScreen from "./components/ScoreScreen";
+import { Routes, Route } from "react-router-dom";
+import StartPage from "./pages/StartPage";
+import QuizPage from "./pages/QuizPage.jsx";
+import ResultsPage from "./pages/ResultsPage";
 
-function shuffleArray(array){
-  return [...array].sort(()=> Math.random()-0.5);
-}
 
-function App(){
-  const [state, dispatch] = useReducer(quizReducer, initialState)
-  // const [questions, setQuestions] = useState([])
-  // const [currentIndex, setCurrentIndex] = useState(0)
-  // const [score, setScore] = useState(0)
-  // const [status, setStatus] = useState("idle")
-  // const [selectedAnswer, setSelectedAnswer] = useState(null)
-  const {questions, currentIndex, score, status, selectedAnswer} = state
-  const currentQuestion = questions[currentIndex]
-  const totalQuestions = questions.length
-
-  function handleStart() {
-    dispatch({ type: "START", payload: shuffleArray(questionsData) })
-  }
-
-  function handleAnswer(choice) {
-    if (status!=="active") return
-    
-    dispatch({ type: "ANSWER", payload: choice })
-  }
-
-  function handleNext() {
-    dispatch({ type: "NEXT" })
-  }
-
-  function handleRestart() {
-    dispatch({ type: "RESTART" })
-  }
-  
+function App() {
   return (
-    <>
-      {status==="idle"&&<StartScreen onStart= {handleStart}/>}
-      {(status==="active"|| status==="answered")&& currentQuestion && 
-      (
-        <>
-          <ProgressBar 
-            currentIndex={currentIndex} 
-            total={totalQuestions}
-          />
-
-          <Question
-            question={currentQuestion}
-            currentIndex={currentIndex}
-            totalQuestions={totalQuestions}
-          />
-          <AnswerOptions
-            question={currentQuestion}
-            selectedAnswer={selectedAnswer}
-            status={status}
-            onAnswer={handleAnswer}
-          />
-          {status==="answered"&&(
-            <button onClick={handleNext}>
-             {currentIndex===totalQuestions-1?"See Score": "Next Question"}
-            </button>
-          )}
-        </>
-      )}
-      {status==="finished" && (
-        <ScoreScreen 
-          score={score} 
-          total={totalQuestions} 
-          onRestart={handleRestart}
-        />
-      )}
-    </>
+    <Routes>
+      <Route path="/" element={<StartPage />} />
+      <Route path="/quiz" element={<QuizPage />} />
+      <Route path="/results" element={<ResultsPage />} />
+    </Routes>
   );
 }
 
-export default App
+export default App;
