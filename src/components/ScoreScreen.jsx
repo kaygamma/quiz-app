@@ -1,5 +1,3 @@
-import React from 'react'
-
 function ScoreScreen({score, total, onRestart}) {
     const percentage = total > 0 ? (score / total) * 100 : 0
     

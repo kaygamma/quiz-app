@@ -10,6 +10,39 @@ export function quizReducer(state, action) {
                 selectedAnswer: null
             }
         }
+        case "SET_OPTIONS": {
+            return{
+                ...state,
+                category: action.payload.category,
+                difficulty: action.payload.difficulty,
+                status: "loading",
+                error: null,
+            }
+        }
+        case "FETCH_SUCCESS": {
+            return{
+                ...state,
+                questions: action.payload,
+                currentIndex: 0,
+                score: 0,
+                status: "active",
+                selectedAnswer: null
+            }
+        }
+        case "FETCH_ERROR": {
+            return{
+                ...state,
+                status: "error",
+                error: action.payload,
+            }
+        }
+        case "RETRY": {
+            return{
+                ...state,
+                status: "loading",
+                error: null,
+            }
+        }
         case "ANSWER": {
             const currentQuestion = state.questions[state.currentIndex]
             const isCorrect = action.payload === currentQuestion.correct_answer
@@ -52,8 +85,10 @@ export function quizReducer(state, action) {
                 selectedAnswer: null
             }
         }
-        default:
-            throw new Error(`Unknown action type: ${action.type}`);
+        default: {
+           throw new Error(`Unknown action type: ${action.type}`) 
+        }
+            
 
     }   
 }
