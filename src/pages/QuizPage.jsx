@@ -13,16 +13,16 @@ function QuizPage() {
   const { questions, currentIndex, status, selectedAnswer, category, difficulty, error } = state
   const navigate = useNavigate()
   const currentQuestion = questions[currentIndex];
-  const totalQuestions = questions.length;
+  const totalQuestions = questions.length
   
   const DURATIONS = { easy: 30, medium: 20, hard: 15 };
-const duration = DURATIONS[difficulty] ?? 30; // plain calculation, every render
+  const duration = DURATIONS[difficulty] ?? 30
 
   useEffect(() => {
     if (status === "idle") {
-      navigate("/"); // no quiz started — bounce back to start
+      navigate("/")
     } else if (status === "finished") {
-      navigate("/results"); // quiz just finished — move to results
+      navigate("/results")
     }
   }, [status, navigate])
 
@@ -61,16 +61,13 @@ const duration = DURATIONS[difficulty] ?? 30; // plain calculation, every render
   }
 
   function handleTimeUp() {
-    if (status !== "active") return // avoid double-firing if already answered
+    if (status !== "active") return 
     dispatch({ type: "TIMEOUT" })
   }
   function handleRetry() {
     dispatch({ type: "RETRY" });
   }
  
-  // ── RENDER BY STATUS ───────────────────────────────────
-  // This is the "loading/error/success" pattern you'll use constantly
-  // with any async data fetching in real apps.
  
   if (status === "loading") {
     return <p className="status-message">Loading questions…</p>
@@ -86,7 +83,7 @@ const duration = DURATIONS[difficulty] ?? 30; // plain calculation, every render
   }
 
   
-  if (!currentQuestion) return null// safety net, e.g. mid-redirect
+  if (!currentQuestion) return null
 
   return (
     <>

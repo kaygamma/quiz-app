@@ -5,16 +5,15 @@ function Timer({ duration, onTimeUp, resetKey, isRunning }) {
   const percent = (timeLeft / duration) * 100
 
   useEffect(() => {
-    setTimeLeft(duration);
-  }, [resetKey, duration]);
+    setTimeLeft(duration)
+  }, [resetKey, duration])
 
   useEffect(() => {
     if (!isRunning) return
     if (timeLeft <= 0) {
-      onTimeUp();
-      return;
+      onTimeUp()
+      return
     }
-
     const intervalId = setInterval(() => {
       setTimeLeft((prev) => prev - 1);
     }, 1000);
@@ -31,5 +30,4 @@ function Timer({ duration, onTimeUp, resetKey, isRunning }) {
     </div>
   );
 }
-
-export default Timer;
+export default Timer

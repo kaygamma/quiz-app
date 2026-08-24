@@ -1,19 +1,9 @@
-// This function is deliberately kept OUTSIDE any component. It's a plain
-// async function — no hooks, no JSX. That makes it easy to reuse and easy
-// to test on its own later if you ever add tests.
-
-// Open Trivia DB returns HTML-encoded text, e.g. "Which of these &amp; that"
-// instead of "Which of these & that". This helper decodes it using a trick:
-// let the browser's own HTML parser do the decoding for us via a <textarea>.
 function decodeHTML(text) {
   const textarea = document.createElement("textarea");
   textarea.innerHTML = text;
   return textarea.value;
 }
 
-// response_code meanings from the Open Trivia DB docs:
-// 0 = success, 1 = no results, 2 = invalid parameter,
-// 3 = token not found, 4 = token empty
 const RESPONSE_CODE_MESSAGES = {
   1: "Not enough questions available for that category/difficulty combo. Try a different selection.",
   2: "Invalid request — check the category or difficulty settings.",
@@ -53,9 +43,6 @@ export async function fetchQuestions({ amount = 10, category, difficulty }) {
     throw new Error(RESPONSE_CODE_MESSAGES[data.response_code] || "Unknown error fetching questions.");
   }
 
-  // Reshape the API's data into EXACTLY the same shape as our old
-  // questions.json — this is why nothing downstream (Question,
-  // AnswerOptions) needs to change at all.
   return data.results.map((item, index) => ({
     id: index,
     question: decodeHTML(item.question),

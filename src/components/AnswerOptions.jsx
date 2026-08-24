@@ -34,5 +34,4 @@ function AnswerOptions({ question, selectedAnswer, status, onAnswer }) {
     </div>
   )
 }
-
 export default AnswerOptions

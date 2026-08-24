@@ -15,5 +15,4 @@ function ScoreScreen({score, total, onRestart}) {
     </div>
   )
 }
-
 export default ScoreScreen

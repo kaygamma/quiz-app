@@ -1,5 +1,3 @@
-import React from 'react'
-
 function Question({question, currentIndex, totalQuestions}) {
   return (
     <div>
