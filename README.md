@@ -4,8 +4,11 @@ A React quiz app that pulls live trivia questions from the Open Trivia DB API, w
 
 **[Live Demo](#)** · **[Repo](https://github.com/kaygamma/quiz-app)**
 
-<!-- Replace the Live Demo link once deployed, and drop a screenshot or GIF below -->
-<!-- ![Quiz app screenshot](./screenshot.png)... PENDING -->
+<img width="44o" height="440" alt="image" src="https://github.com/user-attachments/assets/4469f032-92f3-4d0f-b4e3-40484703235f" />
+<img width="44o" height="440" alt="image" src="https://github.com/user-attachments/assets/9d05bb7b-3a25-4cd5-ae4a-8ce356b83b7c" />
+
+<img width="44o" height="440" alt="Screenshot 2026-08-27 013056" src="https://github.com/user-attachments/assets/eb02f9de-c298-459c-ac9f-09dfb03a131c" />
+
 
 ## Features
 
