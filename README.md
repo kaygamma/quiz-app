@@ -2,6 +2,9 @@
 
 A React quiz app that pulls live trivia questions from the Open Trivia DB API, with configurable category/difficulty, a per-question timer, and persistent high scores.
 
+## Project
+   This is a solution to the [Quiz App project](https://roadmap.sh/projects/quiz-app)
+
 **[Live Demo](#)** · **[Repo](https://github.com/kaygamma/quiz-app)**
 
 <img width="2560" height="1344" alt="image" src="https://github.com/user-attachments/assets/4469f032-92f3-4d0f-b4e3-40484703235f" />
