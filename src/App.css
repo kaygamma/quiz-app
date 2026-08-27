@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+@theme {
+  --color-canvas: #1E1B2E;
+  --color-panel: #272335;
+  --color-ink: #ECE8F5;
+  --color-muted: #9A93B3;
+  --color-keyword: #C792EA;
+  --color-string: #F2A65A;
+  --color-pass: #7FD99F;
+  --color-fail: #E37D7D;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Inter", sans-serif;
+}
+
+body {
+  @apply bg-canvas text-ink font-sans;
+}

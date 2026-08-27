@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import StartPage from "./pages/StartPage";
 import QuizPage from "./pages/QuizPage.jsx";
 import ResultsPage from "./pages/ResultsPage";
+import "./App.css";
 
 
 function App() {

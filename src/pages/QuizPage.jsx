@@ -6,6 +6,8 @@ import { fetchQuestions } from "../utils/fetchQuestions";
 import AnswerOptions from "../components/AnswerOptions"
 import ProgressBar from "../components/ProgressBar"
 import Timer from "../components/Timer"
+import QuizConsole from "../components/QuizConsole"
+
 
 
 function QuizPage() {
@@ -67,18 +69,44 @@ function QuizPage() {
   function handleRetry() {
     dispatch({ type: "RETRY" });
   }
- 
+   // Build the breadcrumb path shown in the console header — this is the
+  // signature element, so it should reflect real state, not be static.
+  const breadcrumbPath = [
+    "quiz",
+    category ? `category-${category}` : "any-category",
+    difficulty || "any-difficulty",
+    currentQuestion ? `question-${String(currentIndex + 1).padStart(2, "0")}.js` : "loading.js",
+  ];
  
   if (status === "loading") {
-    return <p className="status-message">Loading questions…</p>
+    return(
+      <QuizConsole path={["quiz", "loading.js"]}>
+        <div className="flex items-center justify-center mb-6">
+          <svg className="mr-3 size-5 animate-spin text-string" viewBox="0 0 24 24">
+            {/* spinner path here */}
+          </svg>
+          <p className="font-mono text-sm text-muted animate-pulse">
+            // fetching questions…
+          </p>
+        </div>
+    </QuizConsole> 
+    ) 
+       
   }
  
   if (status === "error") {
     return (
-      <div className="status-message">
-        <p>Something went wrong: {error}</p>
-        <button onClick={handleRetry}>Retry</button>
-      </div>
+      <QuizConsole path={["quiz", "error.js"]}>
+        <p className="font-mono text-sm text-fail mb-2">
+          // request failed</p>
+        <p className="text-sm text-ink mb-6">Something went wrong: {error}</p>
+        <button 
+          onClick={handleRetry}
+          className="w-full bg-fail/10 border border-fail/40 hover:bg-fail/20 text-fail font-mono text-sm rounded-md py-3 transition"
+        >
+          Retry
+        </button>
+      </QuizConsole>
     )
   }
 
@@ -86,7 +114,7 @@ function QuizPage() {
   if (!currentQuestion) return null
 
   return (
-    <>
+    <QuizConsole path={breadcrumbPath}>
       <ProgressBar 
         currentIndex={currentIndex}  
         totalQuestions={totalQuestions} 
@@ -113,11 +141,12 @@ function QuizPage() {
       />
 
       {status === "answered" && (
-        <button onClick={handleNext}>
+        <button onClick={handleNext}
+          className="w-full bg-keyword hover:bg-keyword/90 active:scale-[0.99] text-canvas font-mono font-semibold text-sm rounded-md py-3 transition">
           {currentIndex === totalQuestions - 1 ? "See Score" : "Next Question"}
         </button>
       )}
-    </>
+    </QuizConsole>
   );
 }
 

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useQuiz } from "../context/QuizContext";
-// import questionsData from "../data/questions.json";
+// import questionsData from "../data/questions.json"; hardcoded questions are now fetched from the API in the QuizContext
 import StartScreen from "../components/StartScreen";
 
 function StartPage() {

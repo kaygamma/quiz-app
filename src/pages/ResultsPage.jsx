@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useQuiz } from "../context/QuizContext"
 import ScoreScreen from "../components/ScoreScreen"
+import QuizConsole from "../components/QuizConsole"
 
 const STORAGE_KEY = "quiz-App-State"
 
@@ -37,10 +38,13 @@ function ResultsPage() {
   if (status !== "finished") return null
 
   return (
-    <>
+    <QuizConsole path={["quiz", "results.js"]}>
       <ScoreScreen score={score} total={questions.length} onRestart={handleRestart} />
-      <p className="text-lg font-bold">Best Score so far: {bestScore} / {questions.length}</p>
-    </>
+      <p className="font-mono text-xs text-muted mt-4 text-center"
+      >
+        Best: {bestScore} / {questions.length}
+      </p>
+    </QuizConsole>
   );
 }
 
