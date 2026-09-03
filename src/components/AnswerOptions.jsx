@@ -37,7 +37,10 @@ function AnswerOptions({ question, selectedAnswer, status, onAnswer }) {
             onClick={() => onAnswer(option)}
           >
             <span className="flex items-center gap-3">
-              <span className="text-muted">{revealed && isCorrect ? "[x]" : revealed && isSelected ? "[x]" : "[ ]"}</span>
+              <span className="text-muted"
+              >
+                {revealed && isCorrect ? "[✓]" : revealed && isSelected ? "[x]" : "[ ]"}
+              </span>
               <span>{option}</span>
             </span>
 
